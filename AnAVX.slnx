@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AnAVX.vcxproj" Id="ba18b06e-eeab-4795-bcea-3b707de694e0" />
+</Solution>
