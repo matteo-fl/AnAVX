@@ -1,9 +1,9 @@
 #pragma once
+#include "platform.h"
 #include "arena.h"
-#include "string.h"
+#include "string8.h"
 
-void Pause();
-void PrintStringW(stringW str);
-stringW InputStringW(Arena* arena);
-void PrintInt(signed long long value);
-void AVX_PrintInt(signed long long value);
+void    Pause(void);
+void    PrintInt(int64_t value);
+void    PrintString8(string8 str);
+string8 InputString8(Arena* arena);

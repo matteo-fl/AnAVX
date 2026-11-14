@@ -1,16 +1,15 @@
-#include <windows.h>
 #include "arena.h"
 
 int ArenaInit(Arena* arena, size_t reserve_size) {
 	if (arena == NULL) {
 		return 0;
 	}
-	arena->_base = (unsigned char*)VirtualAlloc(NULL, reserve_size, MEM_RESERVE, PAGE_NOACCESS);
+	arena->_base = (unsigned char*)os_reserve(reserve_size);
 	if (arena->_base == NULL) return 0;
 
 	size_t initial_commit = 64 * 1024;
-	if (VirtualAlloc(arena->_base, initial_commit, MEM_COMMIT, PAGE_READWRITE) == NULL) {
-		VirtualFree(arena->_base, 0, MEM_RELEASE);
+	if (os_commit(arena->_base, initial_commit) != 1) {
+		os_release(arena->_base, reserve_size);
 		return 0;
 	}
 
@@ -38,8 +37,7 @@ void* ArenaPush(Arena* arena, size_t size) {
 			return NULL;
 		}
 
-		void* ptr = VirtualAlloc(arena->_base + arena->_committed, size_to_commit, MEM_COMMIT, PAGE_READWRITE);
-		if (ptr == NULL) {
+		if (!os_commit(arena->_base + arena->_committed, size_to_commit)) {
 			return NULL;
 		}
 
@@ -57,7 +55,7 @@ void ArenaDestroy(Arena* arena) {
 	if (arena == NULL || arena->_base == NULL) {
 		return;
 	}
-	VirtualFree(arena->_base, 0, MEM_RELEASE);
+	os_release(arena->_base, arena->_capacity);
 	arena->_base = NULL;
 	arena->_capacity = 0;
 	arena->_committed = 0;
