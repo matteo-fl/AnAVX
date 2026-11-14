@@ -24,39 +24,36 @@
     <ClCompile Include="console_io.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="string.c">
+    <ClCompile Include="string8.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="crt_stub.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="file_mapping.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="utf8_parser.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="anagram_engine.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="platform_win.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="anagram_engine.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="arena.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="console_io.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="string.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="string8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="platform.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="file_mapping.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utf8_parser.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="anagram_engine.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
