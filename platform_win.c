@@ -47,31 +47,34 @@ typedef struct WinInputRecord {
 // ============================================================================
 // Прямые импорты функций из kernel32.dll (без подключения windows.h)
 // ============================================================================
-__declspec(dllimport) void* __stdcall VirtualAlloc(void* lpAddress, size_t dwSize, uint32_t flAllocationType, uint32_t flProtect);
-__declspec(dllimport) int      __stdcall VirtualFree(void* lpAddress, size_t dwSize, uint32_t dwFreeType);
+extern __declspec(dllimport) void* __stdcall VirtualAlloc(void* lpAddress, size_t dwSize, uint32_t flAllocationType, uint32_t flProtect);
+extern __declspec(dllimport) int      __stdcall VirtualFree(void* lpAddress, size_t dwSize, uint32_t dwFreeType);
 
-__declspec(dllimport) void* __stdcall GetStdHandle(uint32_t nStdHandle);
-__declspec(dllimport) int      __stdcall SetConsoleCP(uint32_t wCodePageID);
-__declspec(dllimport) int      __stdcall SetConsoleOutputCP(uint32_t wCodePageID);
-__declspec(dllimport) int      __stdcall GetConsoleMode(void* hConsoleHandle, uint32_t* lpMode);
-__declspec(dllimport) int      __stdcall SetConsoleMode(void* hConsoleHandle, uint32_t dwMode);
-__declspec(dllimport) int      __stdcall ReadConsoleW(void* hConsoleInput, void* lpBuffer, uint32_t nNumberOfCharsToRead, uint32_t* lpNumberOfCharsRead, void* pInputControl);
-__declspec(dllimport) int      __stdcall ReadConsoleInputW(void* hConsoleInput, WinInputRecord* lpBuffer, uint32_t nLength, uint32_t* lpNumberOfEventsRead);
-__declspec(dllimport) int      __stdcall WriteFile(void* hFile, const void* lpBuffer, uint32_t nNumberOfBytesToWrite, uint32_t* lpNumberOfBytesWritten, void* lpOverlapped);
+extern __declspec(dllimport) void* __stdcall GetStdHandle(uint32_t nStdHandle);
+extern __declspec(dllimport) int      __stdcall SetConsoleCP(uint32_t wCodePageID);
+extern __declspec(dllimport) int      __stdcall SetConsoleOutputCP(uint32_t wCodePageID);
+extern __declspec(dllimport) int      __stdcall GetConsoleMode(void* hConsoleHandle, uint32_t* lpMode);
+extern __declspec(dllimport) int      __stdcall SetConsoleMode(void* hConsoleHandle, uint32_t dwMode);
+extern __declspec(dllimport) int      __stdcall ReadConsoleW(void* hConsoleInput, void* lpBuffer, uint32_t nNumberOfCharsToRead, uint32_t* lpNumberOfCharsRead, void* pInputControl);
+extern __declspec(dllimport) int      __stdcall ReadConsoleInputW(void* hConsoleInput, WinInputRecord* lpBuffer, uint32_t nLength, uint32_t* lpNumberOfEventsRead);
+extern __declspec(dllimport) int      __stdcall WriteFile(void* hFile, const void* lpBuffer, uint32_t nNumberOfBytesToWrite, uint32_t* lpNumberOfBytesWritten, void* lpOverlapped);
 
-__declspec(dllimport) int      __stdcall MultiByteToWideChar(uint32_t CodePage, uint32_t dwFlags, const char* lpMultiByteStr, int cbMultiByte, uint16_t* lpWideCharStr, int cchWideChar);
-__declspec(dllimport) int      __stdcall WideCharToMultiByte(uint32_t CodePage, uint32_t dwFlags, const uint16_t* lpWideCharStr, int cchWideChar, char* lpMultiByteStr, int cbMultiByte, const char* lpDefaultChar, int* lpUsedDefaultChar);
+extern __declspec(dllimport) int      __stdcall MultiByteToWideChar(uint32_t CodePage, uint32_t dwFlags, const char* lpMultiByteStr, int cbMultiByte, uint16_t* lpWideCharStr, int cchWideChar);
+extern __declspec(dllimport) int      __stdcall WideCharToMultiByte(uint32_t CodePage, uint32_t dwFlags, const uint16_t* lpWideCharStr, int cchWideChar, char* lpMultiByteStr, int cbMultiByte, const char* lpDefaultChar, int* lpUsedDefaultChar);
 
-__declspec(dllimport) void* __stdcall CreateFileW(const uint16_t* lpFileName, uint32_t dwDesiredAccess, uint32_t dwShareMode, void* lpSecurityAttributes, uint32_t dwCreationDisposition, uint32_t dwFlagsAndAttributes, void* hTemplateFile);
-__declspec(dllimport) int      __stdcall GetFileSizeEx(void* hFile, int64_t* lpFileSize);
-__declspec(dllimport) void* __stdcall CreateFileMappingW(void* hFile, void* lpFileMappingAttributes, uint32_t flProtect, uint32_t dwMaximumSizeHigh, uint32_t dwMaximumSizeLow, const uint16_t* lpName);
-__declspec(dllimport) void* __stdcall MapViewOfFile(void* hFileMappingObject, uint32_t dwDesiredAccess, uint32_t dwFileOffsetHigh, uint32_t dwFileOffsetLow, size_t dwNumberOfBytesToMap);
-__declspec(dllimport) int      __stdcall UnmapViewOfFile(const void* lpBaseAddress);
-__declspec(dllimport) int      __stdcall CloseHandle(void* hObject);
+extern __declspec(dllimport) void* __stdcall CreateFileW(const uint16_t* lpFileName, uint32_t dwDesiredAccess, uint32_t dwShareMode, void* lpSecurityAttributes, uint32_t dwCreationDisposition, uint32_t dwFlagsAndAttributes, void* hTemplateFile);
+extern __declspec(dllimport) int      __stdcall GetFileSizeEx(void* hFile, int64_t* lpFileSize);
+extern __declspec(dllimport) void* __stdcall CreateFileMappingW(void* hFile, void* lpFileMappingAttributes, uint32_t flProtect, uint32_t dwMaximumSizeHigh, uint32_t dwMaximumSizeLow, const uint16_t* lpName);
+extern __declspec(dllimport) void* __stdcall MapViewOfFile(void* hFileMappingObject, uint32_t dwDesiredAccess, uint32_t dwFileOffsetHigh, uint32_t dwFileOffsetLow, size_t dwNumberOfBytesToMap);
+extern __declspec(dllimport) int      __stdcall UnmapViewOfFile(const void* lpBaseAddress);
+extern __declspec(dllimport) int      __stdcall CloseHandle(void* hObject);
 
-__declspec(dllimport) int      __stdcall QueryPerformanceFrequency(int64_t* lpFrequency);
-__declspec(dllimport) int      __stdcall QueryPerformanceCounter(int64_t* lpPerformanceCount);
-__declspec(dllimport) void     __stdcall ExitProcess(uint32_t uExitCode);
+extern __declspec(dllimport) int      __stdcall QueryPerformanceFrequency(int64_t* lpFrequency);
+extern __declspec(dllimport) int      __stdcall QueryPerformanceCounter(int64_t* lpPerformanceCount);
+extern __declspec(dllimport) void     __stdcall ExitProcess(uint32_t uExitCode);
+
+extern __declspec(dllimport) void* __stdcall GetCurrentProcess(void);
+extern __declspec(dllimport) int   __stdcall PrefetchVirtualMemory(void* hProcess, size_t NumberOfEntries, WinMemoryRangeEntry* VirtualAddresses, uint32_t Flags);
 
 // ============================================================================
 // Инициализация, таймер и завершение процесса
@@ -269,4 +272,21 @@ extern int main(void);
 void mainCRTStartup(void) {
 	int code = main();
 	ExitProcess((uint32_t)code);
+}
+
+typedef struct WinMemoryRangeEntry {
+	void* VirtualAddress;
+	size_t NumberOfBytes;
+} WinMemoryRangeEntry;
+
+
+
+void os_prefetch_memory(const void* ptr, size_t size) {
+	if (!ptr || size == 0) return;
+
+	WinMemoryRangeEntry entry;
+	entry.VirtualAddress = (void*)ptr;
+	entry.NumberOfBytes = size;
+
+	PrefetchVirtualMemory(GetCurrentProcess(), 1, &entry, 0);
 }

@@ -2,22 +2,7 @@
 #include "console_io.h"
 
 void Pause() {
-	HANDLE hStdIn = GetStdHandle(STD_INPUT_HANDLE);
-	DWORD mode; 
-	GetConsoleMode(hStdIn, &mode);
-
-	SetConsoleMode(hStdIn, mode & ~(ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT));
-
-	INPUT_RECORD ir;
-	DWORD read;
-
-	while (ReadConsoleInputW(hStdIn, &ir, 1, &read)) {
-		if (ir.EventType == KEY_EVENT && ir.Event.KeyEvent.bKeyDown) {
-			break;
-		}
-	}
-
-	SetConsoleMode(hStdIn, mode);
+	os_pause();
 }
 
 

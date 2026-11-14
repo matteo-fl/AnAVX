@@ -22,3 +22,4 @@ void   os_pause(void);
 // Отображение файлов в память (Memory-Mapped Files)
 int  os_map_file_readonly(OsMappedFile* out_file, const char* path);
 void os_unmap_file(OsMappedFile* file);
+void os_prefetch_memory(const void* ptr, size_t size);

@@ -8,7 +8,7 @@ int ArenaInit(Arena* arena, size_t reserve_size) {
 	if (arena->_base == NULL) return 0;
 
 	size_t initial_commit = 64 * 1024;
-	if (os_commit(arena->_base, initial_commit) != 1) {
+	if (os_commit(arena->_base, initial_commit) != 0) {
 		os_release(arena->_base, reserve_size);
 		return 0;
 	}
@@ -37,7 +37,7 @@ void* ArenaPush(Arena* arena, size_t size) {
 			return NULL;
 		}
 
-		if (!os_commit(arena->_base + arena->_committed, size_to_commit)) {
+		if (os_commit(arena->_base + arena->_committed, size_to_commit) != 0) {
 			return NULL;
 		}
 
